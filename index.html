@@ -11,11 +11,12 @@
    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
    crossorigin="anonymous"></script>
   <style>
+
    body {
      background-color: rgba( 24, 115, 186, 1);
      background-image: url('raster.png');
    }
-   #q-bar, #query, #answer {
+   #q-bar {
      position: absolute;
      left    : 50%;
      transform: translate( -50%, 0% );
@@ -39,6 +40,14 @@
    }
    input:focus {
      outline : rgba( 145, 23, 23, 1 );
+   }
+   #minimum {
+     position  : absolute;
+     bottom    : 0px;
+     top       : 0px;
+     min-height: 48px;
+     left      : 50%;
+     transform : translate( -50%, 0% );
    }
    #query, #answer {
      top        : calc(34px + 14px);
@@ -75,8 +84,10 @@
 </head>
 <body>
  <div id='q-bar'><input id='' placeholder='?'></input></div>
+ <div id='minimum'>
  <div id='query' onclick='reply()'><div id='query-content'></div></div>
  <div id='answer' onclick='posit()'><div id='answer-content'</div></div>
+ </div>
 </body>
 <script>
  // Fetch github
