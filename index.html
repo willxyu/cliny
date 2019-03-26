@@ -1,4 +1,5 @@
 <html><head><title>Clinical Examination</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link href="https://d1h9a8s8eodvjz.cloudfront.net/fonts/menomonia/08-02-12/menomonia.css" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
@@ -14,7 +15,7 @@
      background-color: rgba( 24, 115, 186, 1);
      background-image: url('raster.png');
    }
-   #q-bar, #query, #answer {
+   #q-bar {
      position: absolute;
      left    : 50%;
      transform: translate( -50%, 0% );
@@ -39,30 +40,47 @@
    input:focus {
      outline : rgba( 145, 23, 23, 1 );
    }
+   #minimum {
+     position  : absolute;
+     bottom    : 0px;
+     top       : 0px;
+     min-height: 48px;
+     left      : 50%;
+     width     : 315px;
+     transform : translate( -50%, 0% );
+   }
    #query, #answer {
+     position   : absolute;
      top        : calc(34px + 14px);
      width      : 315px;
      height     : calc(100% - 34px - 14px);
    }
    #query-content, #answer-content {
-     position   : relative;
-     top        : 155px;
      text-align : center;
      font-family: 'Open Sans Condensed','Archivo','Allerta Stencil';
      font-size  : 18pt;
      color      : rgba( 23, 23, 23, 1);
      cursor     : pointer;
    }
+   #query-content {
+     position   : relative;
+     top        : 155px;
+   }
    #answer-content {
-     top        : 50%;
      text-align : left;
      padding-left: 4px;
-     transform  : translate( 0%, calc(-50% - 34px - 14px) );
      font-family: 'Open Sans Condensed','Archivo','Allerta Stencil';
      font-size  : 16pt;
      color      : rgba( 23, 23, 23, 1);
+ /*  margin     : auto; */    /* for full vertical and horizontal centering */
+     margin     : auto 0;     /* for vertical centering only */
+ /*  margin     : 0 auto; */  /* for horizontal centering only */
    }
    #answer {
+     display    : flex;
+     /* align-items: center; */
+     flex-direction: column;  /* make main axis vertical */
+     justify-content: center; /* center items vertically, in this case */
      cursor     : pointer;
    }
    br {
@@ -74,8 +92,10 @@
 </head>
 <body>
  <div id='q-bar'><input id='' placeholder='?'></input></div>
+ <div id='minimum'>
  <div id='query' onclick='reply()'><div id='query-content'></div></div>
- <div id='answer' onclick='posit()'><div id='answer-content'</div></div>
+ <div id='answer' onclick='posit()'><div id='answer-content'></div></div>
+ </div>
 </body>
 <script>
  // Fetch github
@@ -148,7 +168,7 @@
  
  $('body').on('db-ready', function() {
    console.log(db)
-   posit()
+   posit('Splenomegaly')
  })
 
 </script>
