@@ -1,0 +1,152 @@
+<html><head><title>Clinical Examination</title>
+  <link href="https://d1h9a8s8eodvjz.cloudfront.net/fonts/menomonia/08-02-12/menomonia.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans+Condensed:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Allerta+Stencil" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Archivo" rel="stylesheet">
+  <script src='./extlib/jquery-3.1.1.js'></script>
+  <style>
+   body {
+     background-color: rgba( 24, 115, 186, 1);
+     background-image: url('raster.png');
+   }
+   #q-bar, #query, #answer {
+     position: absolute;
+     left    : 50%;
+     transform: translate( -50%, 0% );
+   }
+   #q-bar {
+     top     : 14px;
+     height  : 34px;
+     width   : 315px;
+   }
+   #q-bar input {
+     height  : 32px;
+     width   : 313px;
+     margin  : 0px;
+     padding : 0px;
+     background-color: rgba( 1, 1, 1, 0);
+     border-radius: 3px;
+     border  : none;
+     border-bottom: 1px solid rgba( 145, 145, 45, 1 );
+     font-family: 'Quicksand';
+     font-size  : 14pt;
+   }
+   input:focus {
+     outline : rgba( 145, 23, 23, 1 );
+   }
+   #query, #answer {
+     top        : calc(34px + 14px);
+     width      : 315px;
+     height     : calc(100% - 34px - 14px);
+   }
+   #query-content, #answer-content {
+     position   : relative;
+     top        : 155px;
+     text-align : center;
+     font-family: 'Open Sans Condensed','Archivo','Allerta Stencil';
+     font-size  : 18pt;
+     color      : rgba( 23, 23, 23, 1);
+     cursor     : pointer;
+   }
+   #answer-content {
+     top        : 50%;
+     text-align : left;
+     padding-left: 4px;
+     transform  : translate( 0%, calc(-50% - 34px - 14px) );
+     font-family: 'Open Sans Condensed','Archivo','Allerta Stencil';
+     font-size  : 16pt;
+     color      : rgba( 23, 23, 23, 1);
+   }
+   #answer {
+     cursor     : pointer;
+   }
+   br {
+     display: block; /* makes it have a width */
+     content: ""; /* clears default height */
+     margin-top: 7; /* change this to whatever height you want it */
+   }
+  </style>
+</head>
+<body>
+ <div id='q-bar'><input id='' placeholder='?'></input></div>
+ <div id='query' onclick='reply()'><div id='query-content'></div></div>
+ <div id='answer' onclick='posit()'><div id='answer-content'</div></div>
+</body>
+<script>
+ // Fetch github
+ var now = new Date().getTime()
+ var db  = []
+ var MCQ = {}
+ var url = 'https://api.github.com/repos/medical-newcastle/clinx/contents?time=' + now
+ var p = $.when(1)
+ 
+ var m = $.ajax({url: url})
+     m.done(function(e) {
+      e.forEach(function(f, index) {
+        p = p.then(function() {
+          return $.ajax({url: f.download_url + '?time=' + now })
+        }).then(function(g) {
+          parse(g)
+        })
+      })
+      
+      p.then(function() {
+        $('body').trigger('db-ready')
+      })
+     })
+ 
+ function parse(datum) {
+   var c = datum.split(/##/g)
+   for (var i = 0; i < c.length; i++) {
+     var s = c[i]
+     if (s == '') { } else {
+       var cat = s.match(/.*\%\%/)
+       var A   = s.replace(cat,'').trim().split(/\n/)
+       var Q   = []
+       
+       cat = cat[0].replace('%%','')
+       cat = cat.split(',')
+       cat.forEach(function(category,index) { cat[index] = category.trim() })
+       
+       Q = A.shift()
+       A.forEach(function(answer,index) { A[index] = answer.replace(/^- /,'') })
+       // console.log(cat); console.log(Q); console.log(A)
+       var item = {Q: Q, A: A, cat: cat}
+       db.push(item)
+     }
+   }
+ }
+ 
+ function posit(query) {
+   var q = query || ''
+   var b = []
+   // subset
+   if (q == '') { b = db } else {
+   for (var i = 0; i < db.length; i++) {
+     if (db[i].cat.indexOf(q) != -1) {
+     console.log(db[i])
+       b.push(db[i])
+     }
+   } }
+   MCQ = b[Math.floor(Math.random() * b.length)]
+   $('#query-content').html(MCQ.Q)
+   $('#answer').hide()
+   $('#query').show()
+ }
+ 
+ function reply() {
+   var answers = MCQ.A
+   $('#answer-content').html(answers.join('<br>'))
+   $('#query').hide()
+   $('#answer').show()
+ }
+ 
+ $('body').on('db-ready', function() {
+   console.log(db)
+   posit()
+ })
+
+</script>
+</html>
