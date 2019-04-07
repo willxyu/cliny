@@ -93,8 +93,8 @@
 <body>
  <div id='q-bar'><input id='' placeholder='?'></input></div>
  <div id='minimum'>
- <div id='query' onclick='reply()'><div id='query-content'></div></div>
- <div id='answer' onclick='posit()'><div id='answer-content'></div></div>
+ <div id='query'><div id='query-content'></div></div>
+ <div id='answer'><div id='answer-content'></div></div>
  </div>
 </body>
 <script>
@@ -170,6 +170,33 @@
    console.log(db)
    posit('Splenomegaly')
  })
+  
+ $(document).ready(function(){
+   $('#query').on('click', function() {
+     reply()
+   })
+   $("#answer").on("click", function(e){
+     clicks++
+     if (clicks === 1) {
+      timer = setTimeout(function() {  
+        posit()
+        clicks = 0
+      }, DELAY)
+     } else {
+      clearTimeout(timer)
+      $('#answer').hide()
+      $('#query').show()
+      clicks = 0
+     }
+   })
+   .on("dblclick", function(e){
+     e.preventDefault()
+   })
+ })
+ 
+ clicks = 0
+ timer  = null
+ DELAY  = 340
 
 </script>
 </html>
