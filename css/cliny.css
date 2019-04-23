@@ -1,0 +1,313 @@
+
+body {
+  background-color : rgba(  10, 140, 240, 1);
+  background-image : url('../raster.png');
+}
+
+#q-search, #q-filter {
+  display          : none;
+}
+
+/* Positioning */
+#q-bar {
+  position         : absolute;
+  left             :   50%;
+  top              :  14px;
+  height           :  34px;
+  width            : 315px;
+  transform        : translate( -50%, 0% );
+}
+
+#q-bar input {
+  height           :  32px;
+  width            : 247px;
+  margin           :   0px;
+  padding          :   0px;
+}
+
+#q-back {
+  display          : inline-block;
+  width            :  24px;
+  margin-left      :   4px;
+}
+
+#q-util {
+  position         : absolute;
+  display          : inline-block;
+  right            :   0px;
+  top              :   50%;
+  width            :  24px;
+  transform        : translate( 0%, -50% );
+}
+
+#q-search {
+  position         : relative;
+  height           : 700%;
+  margin           : none;
+  padding          : none;
+  margin-block-start  :   0px;
+  margin-block-end    :   0px;
+  padding-inline-start:  34px;
+}
+
+#q-search li {
+  height           :  34px;
+  width            : calc(100% - 32px);
+}
+
+#q-search li div {
+  height           : 100%;
+  padding-left     :   6px;
+  white-space      : nowrap;
+}
+
+#q-filter {
+  position         : absolute;
+  right            :   6px;
+  top              : calc(34px + 7px);
+  width            :   47.5%;
+  margin-block-start  : 0;
+  margin-block-end    : 0;
+  padding-inline-start: 4px;
+}
+
+#q-filter li {
+  height           :  24px;
+}
+
+#q-filter li .selector {
+  position         : absolute;
+  display          : inline-block;
+  left             : 4px;
+}
+
+#q-size {
+  position         : absolute;
+  right            : 45px;
+  top              : 50%;
+  transform        : translate( 0%, -55% );
+}
+
+#minimum {
+  position         : absolute;
+  bottom           :   0px;
+  top              :   0px;
+  min-height       :  48px;
+  left             :  50%;
+  width            : 315px;
+  transform        : translate( -50%, 0% );
+}
+
+#query, #answer {
+  position         : absolute;
+  top              : calc(34px + 14px);
+  width            : 315px;
+  height           : calc(100% - 34px - 14px);
+}
+
+#query-content {
+  position         : relative;
+  top              : 155px;
+}
+
+#answer-content {
+  padding-left     :  4px;
+  margin           : auto 0;
+}
+
+#answer {
+  display          : flex;
+  flex-direction   : column;
+  justify-content  : center;
+}
+
+br {
+  display          : block;
+  content          : '';
+  margin-top       : 7;
+}
+
+/* Design */
+#q-util, #q-search li, #query-content, #answer-content, #answer, #q-filter li, #q-filter li .selector {
+  cursor           : pointer;
+}
+
+#q-back, #q-util, #q-size, #query, #answer {
+  user-select      : none;
+}
+
+#q-bar input {
+  border           :  none;
+  border-radius    :   3px;
+}
+
+#q-back {
+  cursor           : default;
+}
+
+#q-back.useable {
+  cursor           : pointer;
+}
+
+#q-search {
+  list-style       : none;
+  overflow-y       : auto;
+}
+
+#q-search li div {
+  overflow-x       : hidden;
+}
+
+#q-filter {
+  list-style       : none;
+}
+
+input:focus {
+  outline          : rgba( 145,  23,  23, 1.00 );
+}
+
+/* Colours */
+#q-bar input {
+  background-color : rgba(   1,   1,   1, 0.00 );
+  border-bottom    : 1px solid rgba( 145, 145,  45, 1 );
+}
+
+#q-search li {
+  background       : rgba( 145, 145, 188, 0.67 );
+}
+
+#q-search li div:hover {
+  background       : rgba(  10, 100, 255, 0.88 );
+}
+
+#q-filter {
+  background-color : rgba(  10, 140, 240, 1.00 );
+  background-image : url('../raster.png');
+}
+
+/* Fonts */
+#q-bar input, #q-back, #q-util, #q-search li div, #q-filter li {
+  font-family      : 'Quicksand';
+}
+
+#q-bar input {
+  font-size        :  14pt;
+}
+
+#q-back {
+  font-size        :  24pt;
+  line-height      :  28px;
+  color            : rgba( 125, 125, 125, 0.22 );
+}
+
+#q-back.useable {
+  color            : rgba( 144, 144, 144, 1.00 );
+}
+
+#q-util {
+  font-size        :  15pt;
+  line-height      :  28px;
+  color            : rgba( 125, 125, 125, 1.00 );
+}
+
+#q-util:hover {
+  color            : rgba( 191, 191, 191, 1.00 );
+}
+
+#q-search li div {
+  font-size        :  11pt;
+  line-height      : calc(34px - 5px);
+}
+
+#q-filter {
+  text-align       : right;
+}
+
+#q-filter li {
+  font-size        :  11pt;
+}
+
+#q-size {
+  font-family      : 'Oswald','Open Sans Condensed';
+  font-size        :  14pt;
+  color            : rgba( 144, 144, 144, 1.00 );
+}
+
+#query-content, #answer-content {
+  font-family      : 'Open Sans Condensed';
+  color            : rgba(  23,  23,  23, 1.00 );
+}
+
+#query-content {
+  text-align       : center;
+  font-size        :  18pt;
+}
+
+#answer-content {
+  text-align       : left;
+  font-size        :  16pt;
+}
+
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .23s;
+  transition: .23s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .23s;
+  transition: .23s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
