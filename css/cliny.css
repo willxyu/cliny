@@ -127,6 +127,13 @@ br {
   margin-top       : 7;
 }
 
+#footer {
+  position         : absolute;
+  bottom           : 3px;
+  left             : 50%;
+  transform        : translate( -50%, 0% );
+}
+
 /* Design */
 #q-util, #q-search li, #query-content, #answer-content, #answer, #q-filter li, #q-filter li .selector {
   cursor           : pointer;
@@ -248,6 +255,11 @@ input:focus {
   font-size        :  16pt;
 }
 
+#footer {
+  font-family      : 'Oswald','Open Sans Condensed';
+  font-size        :  10pt;
+  color            : rgba(  41,  41,  41, 0.55 );
+}
 
 /* The switch - the box around the slider */
 .switch {
