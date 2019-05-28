@@ -55,7 +55,8 @@
      var s = c[i]
      if (s == '') { } else {
        var cat = s.match(/.*\%\%/)
-       var A   = s.replace(cat,'').trim().split(/\n/)
+       var ref = s.match(/\$\+.*\$\$/)
+       var A   = s.replace(cat,'').replace(ref,'').trim().split(/\n/)
        var Q   = []
        
        cat = cat[0].replace('%%','')
@@ -65,7 +66,7 @@
        Q = A.shift()
        A.forEach(function(answer,index) { A[index] = answer.replace(/^- /,'') })
        // console.log(cat); console.log(Q); console.log(A)
-       var item = {Q: Q, A: A, cat: cat, uuid: uuid()}
+       var item = {Q: Q, A: A, cat: cat, ref: ref, uuid: uuid()}
        db.push(item)
      }
    }
@@ -131,6 +132,7 @@
    $('#query').show()
    $('#q-back').removeClass('useable') // .css('color','rgba(125,125,125,0.22)')
    $('#q-size').text(tdb.length)
+   if (MCQ.ref) { console.log( MCQ.ref ) }
  }
  
  function reply() {
