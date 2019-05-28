@@ -12,7 +12,8 @@
 <body>
  <div id='minimum'>
  <div id='query'><div id='query-content'>Loading...</div></div>
- <div id='answer'><div id='answer-content'></div><div id='answer-src'>{}</div><div id='answer-source'></div></div>
+ <div id='answer'><div id='answer-content'></div></div>
+ <div id='feeder'><div id='answer-src'>{}</div><div id='answer-source'></div></div>
  <div id='q-bar'>
    <div id='q-back'>&lsaquo;</div>
    <input id='' placeholder='?'></input>
@@ -55,13 +56,15 @@
      var s = c[i]
      if (s == '') { } else {
        var cat = s.match(/.*\%\%/)
-       var ref = s.match(/\$\+.*\$\$/)
+       var ref = s.match(/\$\+.*\$\$/) || []
        var A   = s.replace(cat,'').replace(ref,'').trim().split(/\n/)
        var Q   = []
        
        cat = cat[0].replace('%%','')
        cat = cat.split(',')
        cat.forEach(function(category,index) { cat[index] = category.trim() })
+       
+       if (ref[0]) { ref = ref[0].replace('$+','').replace('$$','').trim() }
        
        Q = A.shift()
        A.forEach(function(answer,index) { A[index] = answer.replace(/^- /,'') })
@@ -248,13 +251,11 @@
   
  function showSource() {
    var ref = ''
-   if (MCQ) { ref = MCQ.ref }
-   $('#answer-source')
-      .text( ref )
-      .css('display','block') 
+   if (typeof MCQ != 'undefined' && typeof MCQ.ref != 'undefined') { console.log(MCQ.ref); ref = MCQ.ref }
+   $('#answer-source').text(ref).css('display','block')
    $('#answer-src').text('x')
  }
-  
+ 
  function hideSource() {
    $('#answer-source').text('').css('display','none')
    $('#answer-src').text('{}')
@@ -325,11 +326,7 @@
    
    $('#answer-src').on('click', function() {
      var hidden = $('#answer-source').css('display')
-     if (hidden == 'none') {
-       showSource()
-     } else {
-       hideSource()
-     }
+     if (hidden == 'none') { showSource() } else { hideSource() }
    })
  })
  
