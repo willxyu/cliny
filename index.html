@@ -13,7 +13,7 @@
  <div id='minimum'>
  <div id='query'><div id='query-content'>Loading...</div></div>
  <div id='answer'><div id='answer-content'></div></div>
- <div id='feeder'><div id='answer-src'>{}</div><div id='answer-source'></div></div>
+ <div id='feeder'><div id='answer-src' class='feeder-icon'>{}</div><div id='answer-source'></div></div>
  <div id='q-bar'>
    <div id='q-back'>&lsaquo;</div>
    <input id='' placeholder='?'></input>
@@ -132,6 +132,8 @@
    MCQ = b[Math.floor(Math.random() * b.length)]
    $('#query-content').html(MCQ.Q)
    $('#answer').hide()
+   $('#answer-src').text('{}').hide()
+   $('#answer-source').text('').css('display','none')
    $('#query').show()
    $('#q-back').removeClass('useable') // .css('color','rgba(125,125,125,0.22)')
    $('#q-size').text(tdb.length)
@@ -142,6 +144,7 @@
    $('#answer-content').html(answers.join('<br>'))
    $('#query').hide()
    $('#answer').show()
+   $('#answer-src').show()
    $('#q-back').addClass('useable') // .css('color','rgba(125,125,125,1)')
  }
  
@@ -248,7 +251,7 @@
    $('#q-util').empty().append('&dHar;')
    $('#q-filter').css('display','none')
  }
-  
+ 
  function showSource() {
    var ref = ''
    if (typeof MCQ != 'undefined' && typeof MCQ.ref != 'undefined') { console.log(MCQ.ref); ref = MCQ.ref }
@@ -328,11 +331,12 @@
      var hidden = $('#answer-source').css('display')
      if (hidden == 'none') { showSource() } else { hideSource() }
    })
+   
  })
  
  clicks = 0
  timer  = null
  DELAY  = 210
-
+  
 </script>
 </html>
