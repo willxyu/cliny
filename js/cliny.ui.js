@@ -16,6 +16,7 @@ reply = function() {
   $('#answer').show()
   $('#answer-src').show()
   $('#q-back').addClass('useable')
+  hideFilter()
 }
 
 reverse = function() {
