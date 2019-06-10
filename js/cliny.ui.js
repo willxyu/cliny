@@ -16,6 +16,7 @@ reply = function() {
   $('#answer').show()
   $('#answer-src').show()
   $('#q-back').addClass('useable')
+  hideFilter()
 }
 
 reverse = function() {
@@ -47,6 +48,7 @@ showSource = function() {
   $('#answer-source').html(ref).css('display','block')
   $('#answer-src')
     .text('x')
+    .addClass('shown')
     .css('border-top-right-radius','0%')
     .css('border-top-left-radius', '0%')
 }
@@ -55,6 +57,5 @@ hideSource = function() {
   $('#answer-source').text('').css('display','none')
   $('#answer-src')
     .text('{}')
-    .css('border-top-right-radius','50%')
-    .css('border-top-left-radius', '50%')
+    .removeClass('shown')
 }

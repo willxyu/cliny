@@ -7,6 +7,7 @@
   <script type='text/javascript' src='./js/cliny.main.js'></script>
   <script type='text/javascript' src='./js/cliny.query.js'></script>
   <script type='text/javascript' src='./js/cliny.ui.js'></script>
+  <script type='text/javascript' src='./js/cliny.functions.js'></script>
   <script
    src="https://code.jquery.com/jquery-3.3.1.min.js"
    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
@@ -16,7 +17,6 @@
  <div id='minimum'>
  <div id='query'><div id='query-content'>Loading...</div></div>
  <div id='answer'><div id='answer-content'></div></div>
- <div id='feeder'><div id='answer-src' class='feeder-icon'>{}</div><div id='answer-source'></div></div>
  <div id='q-bar'>
    <div id='q-back'>&lsaquo;</div>
    <input id='' placeholder='?'></input>
@@ -25,7 +25,11 @@
    <ul id='q-search'></ul>
    <ul id='q-filter'></ul>
  </div>
- <div id='footer'>Contribute via <a href='https://github.com/medical-newcastle/clinx'>Github</a></div>
+ <div id='footer'>
+   <div id='contribute'>Contribute via <a href='https://github.com/medical-newcastle/clinx'>Github</a></div>
+   <div id='feeder'><div id='answer-src' class='feeder-icon'>{}</div><div id='answer-source'></div></div>
+   <div id='copy' onclick='clipboard()'><div id='copy-icon' class='feeder-icon'>∑</div></div>
+ </div>
  </div>
 </body>
 <script>

@@ -54,6 +54,7 @@ posit = function(query) {
   hideSource()
   $('#answer-src').hide()
   $('#query').show()
+  hideFilter()
   $('#q-back').removeClass('useable')
   $('#q-size').text(tdb.length)
 }
