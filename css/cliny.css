@@ -1,6 +1,7 @@
 
 body {
-  background-color : rgba(  10, 140, 240, 1);
+  /* background-color : rgba(  10, 140, 240, 1); */
+  background-color : rgba( 135, 135, 135, 1);
   background-image : url('../raster.png');
 }
 
@@ -129,14 +130,38 @@ br {
 
 #footer {
   position         : absolute;
+  bottom           : 0px;
+  left             : 50%;
+  width            : 315px;
+  height           : 37px;
+  transform        : translate( -50%, 0% );
+}
+
+#contribute {
+  position         : absolute;
   bottom           : 3px;
   left             : 50%;
   transform        : translate( -50%, 0% );
 }
 
+#copy {
+  position         : absolute;
+  top              : 0px;
+  right            : 7px;
+  width            : 28px;
+  height           : 28px;
+}
+
+#copy-icon {
+  position         : absolute;
+  left             : 50%;
+  top              : 50%;
+  transform        : translate( -45%, -57% );
+}
+
 #feeder {
   position         : absolute;
-  bottom           : 13px;
+  top              : 0px;
   left             : 7px;
 }
 
@@ -155,17 +180,17 @@ br {
   position         : absolute;
   top              : calc(-100% - 26px);
   left             : 0px;
-  width            : 240px;
+  width            : calc(315px - 7px - 7px - 0.8em);
   height           : 43px;
   padding          : 0.4em;
 }
 
 /* Design */
-#q-util, #q-search li, #query-content, #answer-content, #answer, #q-filter li, #q-filter li .selector, .feeder-icon {
+#q-util, #q-search li, #query-content, #answer-content, #answer, #q-filter li, #q-filter li .selector, .feeder-icon, #copy {
   cursor           : pointer;
 }
 
-#q-back, #q-util, #q-size, #query, #answer, #answer-src {
+#q-back, #q-util, #q-size, #query, #answer, #answer-src, #contribute, #copy-icon {
   user-select      : none;
 }
 
@@ -200,18 +225,35 @@ input:focus {
 }
 
 #answer-src {
-  border-radius    : 50%;
+  border-bottom-left-radius  : 30%;
+  border-bottom-right-radius : 30%;
 }
 
 #answer-source {
   transition       : all 140ms;
   border-radius    : 5px;
   border-bottom-left-radius : 0px;
+  border-bottom    : 0px;
   overflow-y       : scroll;
 }
 
 #answer-source::-webkit-scrollbar { 
   display: none; 
+}
+
+#footer {
+  border-top-left-radius    : 5px;
+  border-top-right-radius   : 5px;
+}
+
+#copy {
+  border-bottom-left-radius  : 30%;
+  border-bottom-right-radius : 30%;
+}
+
+#hidden-input {
+  position: absolute;
+  left: -999em;
 }
 
 /* Colours */
@@ -239,6 +281,18 @@ input:focus {
 
 #answer-src:hover {
   background-color : rgba( 155, 155, 155, 0.23 );
+}
+
+#answer-src.shown:hover {
+  background-color : rgba(  55,  55,  55, 0.23 );
+}
+
+#footer {
+  background-color : rgba( 255, 255, 255, 0.09 );
+}
+
+#copy {
+  background-color : rgba( 201, 201, 201, 0.11 );
 }
 
 /* Fonts */
@@ -329,6 +383,10 @@ input:focus {
   font-family      : 'Oswald','Open Sans Condensed';
   font-size        : 10pt;
   color            : rgba(  41,  41,  41, 0.55 );
+}
+
+#copy:hover #copy-icon {
+  color            : rgba( 144, 144, 144, 0.85 );
 }
 
 /* The switch - the box around the slider */
