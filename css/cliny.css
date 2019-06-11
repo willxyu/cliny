@@ -296,7 +296,11 @@ input:focus {
   background-image : url('../raster.png');
 }
 
-#answer-src, #answer-source  {
+#answer-src {
+  background-color : rgba(  55,  55,  55, 0.06 );
+}
+
+#answer-source  {
   background-color : rgba( 201, 201, 201, 0.11 );
 }
 
