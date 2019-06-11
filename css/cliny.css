@@ -1,7 +1,7 @@
 
 body {
-  /* background-color : rgba(  10, 140, 240, 1); */
-  background-color : rgba( 135, 135, 135, 1);
+  /* background-color : rgba( 135, 135, 135, 1); */
+  background-color : rgba(  10, 140, 240, 1);
   background-image : url('../raster.png');
 }
 
@@ -103,7 +103,7 @@ body {
   position         : absolute;
   top              : calc(34px + 14px);
   width            : 315px;
-  height           : calc(100% - 34px - 14px);
+  height           : calc(100% - 34px - 14px - 37px);
 }
 
 #query-content {
@@ -135,6 +135,14 @@ br {
   width            : 315px;
   height           : 37px;
   transform        : translate( -50%, 0% );
+}
+
+#footer-extension {
+  position         : absolute;
+  bottom           : 0px;
+  left             : 0px;
+  width            : 100%;
+  height           : 37px;
 }
 
 #contribute {
@@ -248,7 +256,7 @@ input:focus {
   display: none; 
 }
 
-#footer {
+#footer, #footer-extension {
   border-top-left-radius    : 5px;
   border-top-right-radius   : 5px;
 }
@@ -288,7 +296,11 @@ input:focus {
   background-image : url('../raster.png');
 }
 
-#answer-src, #answer-source  {
+#answer-src {
+  background-color : rgba(  55,  55,  55, 0.06 );
+}
+
+#answer-source  {
   background-color : rgba( 201, 201, 201, 0.11 );
 }
 
@@ -301,6 +313,10 @@ input:focus {
 }
 
 #footer {
+  background-color : rgba( 255, 255, 255, 0.03 );
+}
+
+#footer-extension {
   background-color : rgba( 255, 255, 255, 0.09 );
 }
 
