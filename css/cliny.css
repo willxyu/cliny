@@ -1,7 +1,7 @@
 
 body {
-  /* background-color : rgba(  10, 140, 240, 1); */
-  background-color : rgba( 135, 135, 135, 1);
+  /* background-color : rgba( 135, 135, 135, 1); */
+  background-color : rgba(  10, 140, 240, 1);
   background-image : url('../raster.png');
 }
 
@@ -103,7 +103,7 @@ body {
   position         : absolute;
   top              : calc(34px + 14px);
   width            : 315px;
-  height           : calc(100% - 34px - 14px);
+  height           : calc(100% - 34px - 14px - 37px);
 }
 
 #query-content {
