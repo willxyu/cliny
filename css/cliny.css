@@ -185,6 +185,12 @@ br {
   padding          : 0.4em;
 }
 
+#copied {
+  position         : absolute;
+  top              : -21px;
+  right            : calc(7px + 4px);
+}
+
 /* Design */
 #q-util, #q-search li, #query-content, #answer-content, #answer, #q-filter li, #q-filter li .selector, .feeder-icon, #copy {
   cursor           : pointer;
@@ -233,6 +239,7 @@ input:focus {
   transition       : all 140ms;
   border-radius    : 5px;
   border-bottom-left-radius : 0px;
+  border-bottom-right-radius: 0px;
   border-bottom    : 0px;
   overflow-y       : scroll;
 }
@@ -254,6 +261,10 @@ input:focus {
 #hidden-input {
   position: absolute;
   left: -999em;
+}
+
+#copied {
+  opacity   : 0;
 }
 
 /* Colours */
@@ -280,7 +291,7 @@ input:focus {
 }
 
 #answer-src:hover {
-  background-color : rgba( 155, 155, 155, 0.23 );
+  background-color : rgba(  55,  55,  55, 0.13 );
 }
 
 #answer-src.shown:hover {
@@ -387,6 +398,10 @@ input:focus {
 
 #copy:hover #copy-icon {
   color            : rgba( 144, 144, 144, 0.85 );
+}
+
+#copied {
+  color            : rgba(   1,   1,   1, 0.89 );
 }
 
 /* The switch - the box around the slider */
