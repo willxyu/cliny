@@ -28,7 +28,15 @@ reverse = function() {
 filterise = function() {
   var template = '<li class="li-selector"><label class="switch"><input type="checkbox" checked="checked" data="DATUM"><span class="slider round"></span></label><div class="selector">CONTENT</div></li>'
   var s = ''
-  for (var k in perms) { s += template.replace('CONTENT', k).replace('DATUM', k) }
+  for (var k in perms) {
+    var t = k
+    if (typeof cats != 'undefined' && 
+        typeof cats[k] != 'undefined' &&
+        typeof cats[k].length == 'number') {
+      t = k + ' (' + cats[k].length + ')'
+    }
+    s += template.replace('CONTENT', t).replace('DATUM', k) 
+  }
   $('#q-filter').empty().append(s)
 }
 
