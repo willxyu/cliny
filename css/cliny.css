@@ -274,11 +274,13 @@ input:focus {
 }
 
 #q-search li {
-  background       : rgba( 145, 145, 188, 0.67 );
+  /* background       : rgba( 145, 145, 188, 0.67 ); */
+  background-color : rgba(  10, 140, 240, 0.80 );
 }
 
 #q-search li div:hover {
-  background       : rgba(  10, 100, 255, 0.88 );
+  /* background       : rgba(  10, 100, 255, 0.88 ); */
+  background-color : rgba(  10, 140, 240, 1.00 );
 }
 
 #q-filter {

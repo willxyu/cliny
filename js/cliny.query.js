@@ -11,7 +11,7 @@ focus = function() {
     for (var key in cats) {
       var u = cats[key]
           u = u[Math.floor(Math.random() * u.length)]
-      s += t.replace('CONTENT', key).replace('QUERICAL', 'qbar(\'' + u + '\')')
+      s += t.replace('CONTENT', key).replace('QUERICAL', 'posit(\'' + u + '\')')
     }
   } else {
     var L = search(Q)
@@ -26,15 +26,10 @@ focus = function() {
       sort_by('Q',         true, null),
     ]) )
     for (var i = 0; i < L.length; i++) {
-      s += t.replace('CONTENT', L[i].Q).replace('QUERICAL', 'qbar(\'' + L[i].uuid + '\')')
+      s += t.replace('CONTENT', L[i].Q).replace('QUERICAL', 'posit(\'' + L[i].uuid + '\')')
     }
   }
   $('#q-search').empty().append(s)
-}
-
-qbar = function(uuid) {
-  posit(uuid)
-  $('#q-search').css('display','none')
 }
  
 /*

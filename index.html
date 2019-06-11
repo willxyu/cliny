@@ -106,7 +106,7 @@
      $('#q-search').css('display','block')
      focus()
    }).on('focusout', function() {
-     setTimeout(function() { $('#q-search').css('display','none') }, 100)
+     hideSearch()
    }).on('keyup', function(e) {
      focus()
    })

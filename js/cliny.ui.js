@@ -50,6 +50,10 @@ hideFilter = function() {
   $('#q-filter').css('display','none')
 }
 
+hideSearch = function() {
+  setTimeout(function() { $('#q-search').css('display','none') }, 150)
+}
+
 showSource = function() {
   var ref = ''
   if (typeof MCQ != 'undefined' && typeof MCQ.ref != 'undefined') { /*console.log(MCQ.ref);*/ ref = MCQ.ref }
