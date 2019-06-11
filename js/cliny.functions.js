@@ -10,4 +10,6 @@ clipboard = function() {
   $t.val(a.html().replace(/<br\s*[\/]?>/gi, "\r\n")).select()
   document.execCommand('copy')
   $t.remove()
+  
+  $('#copied').animate({ opacity: 1 }, 30, 'easeOutSine').delay(450).animate({ opacity: 0 }, 180, 'easeInCubic')
 }
