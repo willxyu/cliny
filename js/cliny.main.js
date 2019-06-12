@@ -22,18 +22,13 @@ timer   = null
  */
 
 posit = function(query) {
-  // State-tracking
-  if (typeof tperms == 'undefined') { tperms = clone(perms) }
-  else {
-    if (tpermissioned()) { } else {
-      tperms = clone(perms)
-      tdb = []
-      for (var i = 0; i < db.length; i++) {
-        var item = db[i]
-        for (var key in tperms) {
-          if (tperms[key] && item.cat.indexOf(key) != -1) { tdb.push(item); break }
-        }
-      }
+  // Reconcile permissions
+  tperms = clone(perms)
+  tdb    = []
+  for (var i = 0; i < db.length; i++) {
+    var item = db[i]
+    for (var key in tperms) {
+      if (tperms[key] && item.cat.indexOf(key) != -1) { tdb.push(item); break }
     }
   }
   
@@ -113,16 +108,10 @@ parse = function(datum) {
 /*
   Utility
   - retrieve(id)
-  - tpermissioned()
  */
 retrieve = function(id) {
   for (var i = 0; i < db.length; i++) {
     if (db[i].uuid == id) { return db[i] }
   }
   return null
-}
-
-tpermissioned = function() {
-  for (var key in tperms) { if (tperms[key] == perms[key]) { /* Continue */ } else { return false } }
-  return true
 }
