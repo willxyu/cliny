@@ -36,6 +36,7 @@
    <div id='feeder'><div id='answer-src' class='feeder-icon'>{}</div><div id='answer-source'></div></div>
    <div id='copy' onclick='clipboard()'><div id='copy-icon' class='feeder-icon'>∑</div></div>
    <div id='copied'>Copied to clipboard!</div>
+   <div id='clear' onclick='storageClearPerms()'>⨱</div>
  </div>
  </div>
 </body>
@@ -71,26 +72,10 @@
    $('#q-size').text(tdb.length)
    // Figure out categories
    categorise()
-   
+   // Update perms[] from localStorage
+   storageInitialisation()
    // Generate filters
    filterise()
-   $('#q-filter li input').change(function() {
-     var header = this.getAttribute('data')
-     if (header == 'All') {
-       if (this.checked) {
-         $('.in-check').attr('checked', true)
-         for (var key in perms) { perms[key] = true }
-       } else {
-         $('.in-check').attr('checked', false)
-         for (var key in perms) { perms[key] = false }
-       }
-     } else {
-     if (this.checked) {
-       perms[header] = true
-     } else {
-       perms[header] = false
-     } }
-   })
    // Pose first question
    posit()
  })
@@ -133,6 +118,7 @@
    
    $('#q-util').on('click', function() {
      var hidden = $('#q-filter').css('display')
+     filterise()
      if (hidden == 'none') { showFilter() } else { hideFilter() }
    })
    
