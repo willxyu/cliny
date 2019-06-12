@@ -48,15 +48,21 @@ posit = function(query) {
       if (db[i].cat.indexOf(q) != -1) { b.push(db[i]) }
     }
   }
-  MCQ = b[Math.floor(Math.random() * b.length)]
-  $('#query-content').html(MCQ.Q)
-  $('#answer').hide()
   hideSource()
   $('#answer-src').hide()
-  $('#query').show()
   hideFilter()
   $('#q-back').removeClass('useable')
   $('#q-size').text(tdb.length)
+  if (b.length <= 0) {
+    showError('No valid questions from selected categories.')
+    $('#answer-content').text('')
+    return
+  } else {
+    MCQ = b[Math.floor(Math.random() * b.length)]
+    $('#query-content').html(MCQ.Q)
+  }
+  $('#answer').hide()
+  $('#query').show()
 }
 
 categorise = function() {
