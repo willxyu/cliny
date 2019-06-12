@@ -72,3 +72,11 @@ hideSource = function() {
     .text('{}')
     .removeClass('shown')
 }
+
+showError = function(msg) {
+  $('#error')
+    .text(msg)
+    .css('opacity','1')
+    .delay(1100)
+    .animate({opacity: 0}, 400)
+}

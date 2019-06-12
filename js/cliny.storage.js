@@ -7,12 +7,13 @@ storageTest = function() {
   } catch(err) {
     return false
   }
+  return true
 }
 
 storageInitialisation = function() {
   if (!storageTest()) {
-    console.log('No ability to use localStorage.')
+    showError('Unable to use local storage to remember preferences.')
   } else {
-  
+    console.log('window.localStorage passed.')
   }
 }

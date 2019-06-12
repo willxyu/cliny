@@ -199,6 +199,20 @@ br {
   right            : calc(7px + 4px);
 }
 
+#error {
+  position         : absolute;
+  left             : 50%;
+  top              : 50%;
+  transform        : translate( -50%, -50% );
+}
+
+#download-notice {
+  position         : absolute;
+  top              : 0px;
+  left             : 50%;
+  transform        : translate( -50%, 0% );
+}
+
 /* Design */
 #q-util, #q-search li, #query-content, #answer-content, #answer, #q-filter li, #q-filter li .selector, .feeder-icon, #copy {
   cursor           : pointer;
@@ -325,7 +339,7 @@ input:focus {
 }
 
 /* Fonts */
-#q-bar input, #q-back, #q-util, #q-search li div, #q-filter li, .feeder-icon {
+#q-bar input, #q-back, #q-util, #q-search li div, #q-filter li, .feeder-icon, #error {
   font-family      : 'Quicksand';
 }
 
@@ -420,6 +434,12 @@ input:focus {
 
 #copied {
   color            : rgba(   1,   1,   1, 0.89 );
+}
+
+#download-notice {
+  font-family      : 'Oswald';
+  font-size        : 8pt;
+  color            : rgba(   1,   1,   1, 0.67) ;
 }
 
 /* The switch - the box around the slider */
